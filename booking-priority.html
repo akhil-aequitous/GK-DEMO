@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>GaadiKharcha - Booking Operations Demo</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#fff;font-family:Arial,Helvetica,sans-serif;color:#073b7d}
+.page{width:100%;min-height:100vh;padding:18px 22px;overflow:auto}
+.title{width:60%;margin:auto auto 10px;background:#073f82;color:#fff;border-radius:14px;text-align:center;padding:12px 10px}
+.title h1{margin:0;font-size:clamp(14px,2.5vw,24px)}.subtitle{margin-top:2px;font-size:clamp(18px,1.1vw,28px)}
+.banner{background:#ced7dd;border-radius:10px;text-align:center;padding:7px;margin-bottom:9px;font-weight:700}
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.row2{grid-template-columns:repeat(7,1fr);margin-top:26px}
+.card{min-width:0;border:2px solid var(--a);border-radius:13px;background:var(--l);overflow:visible;position:relative;transition:transform .18s ease,box-shadow .18s ease;cursor:pointer}
+.card:hover{transform:scale(1.07);box-shadow:0 10px 26px #0003;z-index:30}
+.head{background:var(--a);color:#fff;border-radius:10px 10px 0 0;min-height:46px;display:flex;align-items:center;gap:8px;padding:6px 9px;font-weight:800;font-size:clamp(12px,1.15vw,18px)}
+.num{flex:0 0 40px;height:40px;border-radius:50%;background:#083d83;color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;border:2px solid #fff8}
+.content{padding:9px 10px 6px;font-size:clamp(10px,.82vw,14px);line-height:1.28;min-height:150px}.content ul{margin:0;padding-left:18px}.content li{margin:3px 0}
+.callout{margin:0 8px 8px;padding:7px 8px;border-radius:8px;background:#fff8;text-align:center;font-weight:800;font-size:clamp(10px,.78vw,13px);color:var(--a)}
+.arrow{position:absolute;right:-18px;top:50%;transform:translateY(-50%);color:#0b86e9;font-size:25px;font-weight:900;z-index:5}
+.book{--a:#ef2334;--l:#fff0f1}.duty{--a:#087fe8;--l:#eef8ff}.invoice{--a:#7627df;--l:#f4edff}.calendar{--a:#08a76d;--l:#eafff6}.compliance{--a:#e9aa08;--l:#fff8dd}
+.finance{--a:#0877df;--l:#eef8ff}.mis{--a:#7025df;--l:#f4edff}.expense{--a:#ef2334;--l:#fff0f1}.supplier{--a:#e87900;--l:#fff4e5}.driver{--a:#1885e9;--l:#eef8ff}.network{--a:#08a76d;--l:#eafff6}.master{--a:#ef2334;--l:#fff0f1}
+.turn{height:17px;border-left:5px solid #0b86e9;border-bottom:5px solid #0b86e9;width:calc(20% - 12px);margin-left:7%;position:relative}.turn:after{content:"";position:absolute;right:-2px;bottom:-8px;border-left:9px solid #0b86e9;border-top:7px solid transparent;border-bottom:7px solid transparent;transform:rotate(90deg)}
+.bottom{display:grid;grid-template-columns:1.55fr 1.2fr .65fr;gap:10px;margin-top:12px}.panel{border:2px solid #0a4d83;border-radius:12px;overflow:hidden;background:#fff}
+.panel-head{background:#075083;color:#fff;padding:7px 12px;font-size:clamp(13px,1.2vw,19px);font-weight:900}
+.questions{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;padding:7px}.q{border-radius:9px;padding:8px 5px;text-align:center;min-height:115px;display:flex;flex-direction:column;justify-content:space-between;font-size:clamp(9px,.75vw,13px);font-weight:700}.q:nth-child(1){background:#e9f5ff}.q:nth-child(2){background:#eee5ff}.q:nth-child(3){background:#ffe6e8}.q:nth-child(4){background:#ddfaee}.q:nth-child(5){background:#fff4d8}.q .tag{padding:5px;border-radius:7px;background:#fff7}
+.timing{padding:8px}.time-row{display:grid;grid-template-columns:38px 1fr 45px;gap:6px;align-items:center;margin:4px 0;padding:6px 8px;border-radius:8px;font-size:clamp(9px,.75vw,13px);font-weight:800}.time-row:nth-child(1){background:#ffe7ea}.time-row:nth-child(2){background:#dff0ff}.time-row:nth-child(3){background:#eee2ff}.time-row:nth-child(4){background:#e1faef}.time-row:nth-child(5){background:#fff0c9}
+.close{border-color:#08a76d}.close .panel-head{background:#079b67}.close ul{margin:10px 15px 14px 25px;padding:0;font-size:clamp(10px,.85vw,14px);line-height:1.6}
+@media(max-width:1100px){.page{min-width:1100px}}
+@media print{@page{size:16in 9in;margin:0}body{print-color-adjust:exact;-webkit-print-color-adjust:exact}.page{width:1600px;height:900px;min-height:900px;overflow:hidden}}
+</style>
+</head>
+<body><div class="page">
+
+<header class="title">
+<h1>GaadiKharcha - DEMO (BOOKING OPERATIONS Priority)</h1>
+
+</header>
+<div class="banner">Use one realistic booking throughout the demo to show the complete flow.</div>
+
+<section class="flow">
+<article class="card book"><div class="head"><span class="num">1</span>Bookings</div><div class="content"><ul><li>Create or accept booking</li><li>Capture customer, trip type, pickup/drop, date/time</li><li>Show booking status tabs (Need Action → Invoiced)</li></ul></div><div class="callout">Start with one realistic booking request.</div><span class="arrow">➜</span></article>
+<article class="card duty"><div class="head"><span class="num">2</span>Allocate &amp; Run Duty</div><div class="content"><ul><li>Allocate owned or supplier vehicle</li><li>Assign driver &amp; confirm availability</li><li>Send duty slip / WhatsApp</li><li>Use driver app &amp; live tracking</li><li>Close with actual KM, times and allowances</li></ul></div><div class="callout">Show how booking becomes an actual duty.</div><span class="arrow">➜</span></article>
+<article class="card invoice"><div class="head"><span class="num">3</span>Invoice in Finance Management</div><div class="content"><ul><li>Show billing (package, extra KM/hours, GST/RCM)</li><li>Generate quote/estimate/GST invoice</li><li>Select billing organization</li><li>Record advance or customer payment</li></ul></div><div class="callout">Convert completed duty into customer billing.</div><span class="arrow">➜</span></article>
+<article class="card calendar"><div class="head"><span class="num">4</span>Driver Duties / Calendar</div><div class="content"><ul><li>Show driver duties and calendar</li><li>Vehicle-driver allocation</li><li>Explain timeline to avoid double allocation</li></ul></div><div class="callout">Show daily operations and allocation clearly.</div><span class="arrow">➜</span></article>
+<article class="card compliance"><div class="head"><span class="num">5</span>Compliance</div><div class="content"><ul><li>Show insurance, permit, RC and other records</li><li>Show RC sync (if enabled)</li><li>Compliance refresh</li></ul></div><div class="callout">Show that the fleet is compliant and controlled.</div></article>
+</section>
+
+<div class="turn"></div>
+
+<section class="flow row2">
+<article class="card finance"><div class="head"><span class="num">6</span>Finance Management</div><div class="content"><ul><li>Show total revenue</li><li>Receivables &amp; payables</li><li>Cashbook and invoices</li><li>Open Total Expense (link to Expenses in MIS)</li></ul></div><div class="callout">Show the overall financial health.</div><span class="arrow">➜</span></article>
+<article class="card mis"><div class="head"><span class="num">7</span>MIS / Business Performance</div><div class="content"><ul><li>Show Booking P&amp;L</li><li>Vehicle MIS</li><li>Vehicle daily billing</li><li>Driver duty &amp; supplier details</li><li>Toll reconciliation</li><li>Other relevant reports</li></ul></div><div class="callout">Show income, cost and profitability after duties.</div><span class="arrow">➜</span></article>
+<article class="card expense"><div class="head"><span class="num">8</span>Expenses</div><div class="content"><ul><li>Show fuel expenses</li><li>Maintenance expenses</li><li>Vehicle/toll expenses</li><li>Business expenses</li><li>Receipt uploads</li></ul></div><div class="callout">Show how operating costs are captured.</div><span class="arrow">➜</span></article>
+<article class="card supplier"><div class="head"><span class="num">9</span>Supplier Cost / Purchase Invoice</div><div class="content"><ul><li>Show supplier rates</li><li>Add purchase invoice / duty</li><li>Compare in Booking P&amp;L</li></ul></div><div class="callout">Show both customer billing and supplier cost.</div><span class="arrow">➜</span></article>
+<article class="card driver"><div class="head"><span class="num">10</span>Driver App</div><div class="content"><ul><li>Show driver accept/reject</li><li>Live tracking, KM/time capture</li><li>Customer signature (if enabled)</li><li>Public job links (if relevant)</li></ul></div><div class="callout">Show real-time duty execution.</div><span class="arrow">➜</span></article>
+<article class="card network"><div class="head"><span class="num">11</span>Network</div><div class="content"><ul><li>Show network profile and partners</li><li>Share to network</li><li>Show flow: Offered → Accepted → Fulfilling → Completed</li></ul></div><div class="callout">Show how to extend capacity.</div><span class="arrow">➜</span></article>
+<article class="card master"><div class="head"><span class="num">12</span>Master Data</div><div class="content"><ul><li>Show vehicle types</li><li>Workforce (drivers/staff)</li><li>Clients and suppliers</li><li>Duty types and rates</li><li>Branch &amp; staff</li></ul></div><div class="callout">Show the data that makes the workflow repeatable.</div></article>
+</section>
+
+<section class="bottom">
+<div class="panel"><div class="panel-head">❓ 5 Questions the Demo Must Answer</div><div class="questions">
+<div class="q"><strong>1</strong><span>How easy is it to take and manage bookings?</span><div class="tag">Bookings</div></div>
+<div class="q"><strong>2</strong><span>How are vehicles and drivers allocated and run?</span><div class="tag">Allocate &amp; Run Duty</div></div>
+<div class="q"><strong>3</strong><span>How is the customer invoiced?</span><div class="tag">Invoice</div></div>
+<div class="q"><strong>4</strong><span>Can my team track drivers and vehicles?</span><div class="tag">Driver Duties</div></div>
+<div class="q"><strong>5</strong><span>Will this integrate with finance, expenses and compliance?</span><div class="tag">Finance + MIS + Expenses + Compliance</div></div>
+</div></div>
+
+<div class="panel"><div class="panel-head">◷ Suggested Demo Timing (15–20 minutes)</div><div class="timing">
+<div class="time-row"><b>1</b><span>Bookings</span><strong>4 min</strong></div>
+<div class="time-row"><b>2</b><span>Allocate &amp; Run Duty</span><strong>4 min</strong></div>
+<div class="time-row"><b>3</b><span>Invoice</span><strong>3 min</strong></div>
+<div class="time-row"><b>4</b><span>Duties + Compliance</span><strong>4 min</strong></div>
+<div class="time-row"><b>5</b><span>Finance + MIS + Expenses + Network + Master Data</span><strong>5 min</strong></div>
+</div></div>
+
+<div class="panel close"><div class="panel-head">🏁 Close the Demo</div><ul><li>Recap key outcomes</li><li>Answer client questions</li><li>Highlight relevant optional modules (if enabled)</li><li>Next steps</li></ul></div>
+</section>
+
+</div></body></html>
